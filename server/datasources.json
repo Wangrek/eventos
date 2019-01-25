@@ -1,0 +1,35 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "emailDs": {
+    "name": "emailDs",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "tls": {
+          "rejectUnauthorized": false
+        },
+        "auth": {
+          "user": "abraham.saldivar@vun.mx",
+          "pass": "4br4h4m666"
+        }
+      }
+    ]
+  },
+  "postgres": {
+    "host": "127.0.0.1",
+    "port": "5432",
+    "database": "eventos",
+    "username": "cms_user",
+    "password": "cms123",
+    "name": "postgres",
+    "debug": true,
+    "connector": "postgresql"
+  }
+}
