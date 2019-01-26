@@ -10,7 +10,7 @@
   <link href="https://framework-gb.cdn.gob.mx/favicon.ico" rel="shortcut icon">
   <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
   <style>
-    .login-form {
+    .logs-form {
       padding: 60px;
       margin: 40px 0 70px;
       border: 1px solid #eee;
@@ -57,10 +57,10 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <h1>Ingresar</h1>
-          <form class="login-form" action="/login" method="post">
+          <form action="/login" method="post" class="logs-form">
             <div class="form-group">
               <label for="login-email">Correo electrónico:</label>
-              <input type="email" name="email" class="form-control" id="login-email" placeholder="Ingresa tu correo electrónico" autofocus>
+              <input type="email" name="email" class="form-control" id="login-email" placeholder="Ingresa tu correo electrónico">
             </div>
             <div class="form-group">
               <label for="login-password">Contraseña:</label>
@@ -69,8 +69,8 @@
             </div>
             <button type="submit" class="btn btn-primary btn-block" disabled="disabled">Entrar</button>
             <div class="form-group more-links">
-              <a href="#">Olvidé mi contraseña</a>
-              <a href="#">Crear cuenta</a>
+              <a href="/reset">Olvidé mi contraseña</a>
+              <a href="/registro">Crear cuenta</a>
             </div>
           </form>
         </div>

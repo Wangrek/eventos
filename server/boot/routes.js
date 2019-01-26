@@ -18,6 +18,14 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/registro', function(req, res) {
+    res.render('register');
+  });
+
+  app.get('/reset', function (req, res) {
+    res.render('reset');
+  });
+
   //verified
   app.get('/verified', function(req, res) {
     res.render('verified');
