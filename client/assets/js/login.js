@@ -13,9 +13,6 @@
       var $pass = $('#login-password');
       var $submit = $('button[type="submit"]');
 
-      // Se desabilita el botón por si se refresca la página
-      $submit.attr('disabled', 'disabled');
-
       // Valida la entrada del email cuando pierde su foco
       $email.focusout(function() {
         $('.invalid-text').remove();
