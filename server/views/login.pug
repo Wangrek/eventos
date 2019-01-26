@@ -1,0 +1,44 @@
+doctype html
+html(lang='es')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Ingresar
+    // CSS
+    link(href='https://framework-gb.cdn.gob.mx/favicon.ico', rel='shortcut icon')
+    link(href='https://framework-gb.cdn.gob.mx/assets/styles/main.css', rel='stylesheet')
+    link(rel='stylesheet', href='/assets/css/app.css')
+    // Respond.js soporte de media queries para Internet Explorer 8
+    // ie8.js EventTarget para cada nodo en Internet Explorer 8
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')
+  body
+    // Contenido
+    main.page
+      .container
+        .row
+          .col-md-6.col-md-offset-3
+            h1 Ingresar
+            form.logs-form(action='/login', method='post')
+              if message_error
+                p.alert.alert-danger= message_error
+              .form-group
+                label(for='login-email') Correo electrónico:
+                input#login-email.form-control(type='email', name='email', value=email, placeholder='Ingresa tu correo electrónico')
+              .form-group
+                label(for='login-password') Contraseña:
+                input#login-password.form-control(type='password', name='password', value=password, placeholder='Ingresa tu contraseña')
+                small.text-help La contraseña debe tener al menos 6 caractéres
+              if message_error
+                button.btn.btn-primary.btn-block(type='submit') Entrar
+              esle
+                button.btn.btn-primary.btn-block(type='submit', disabled='disabled') Entrar
+              .form-group.more-links
+                a(href='/reset') Olvidé mi contraseña
+                a(href='/registro') Crear cuenta
+    // JS
+    script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+    script(src='https://framework-gb.cdn.gob.mx/gobmx.js')
+    script(src='/assets/js/login.js')

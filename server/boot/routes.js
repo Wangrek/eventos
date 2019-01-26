@@ -13,8 +13,9 @@ module.exports = function(app) {
   app.get('/', function(req, res) {
     var credentials = dsConfig.emailDs.transports[0].auth;
     res.render('login', {
-      email: credentials.user,
-      password: credentials.pass
+      message_error: false,
+      email: '',
+      password: ''
     });
   });
 
@@ -48,8 +49,10 @@ module.exports = function(app) {
             userId: err.details.userId
           });
         } else {
-          res.render('response', {
-            title: 'Error de inicio de sesión. Nombre de usuario o contraseña incorrectos',
+          res.render('login', {
+            message_error: 'Error de inicio de sesión. Nombre de usuario o contraseña incorrectos',
+            email: req.body.email,
+            password: req.body.password,
             content: err,
             redirectTo: '/',
             redirectToLinkText: 'Por favor vuelve a iniciar sesión',
