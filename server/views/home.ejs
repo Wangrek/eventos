@@ -1,25 +1,45 @@
-<main>
-  <h1>Hi <%= email %>.</h1>
-  <p>Your accessToken is: <%= accessToken %></p>
-<section>
-    <form action="<%= redirectUrl %>" method="post">
-    <fieldset>
-      <legend>Change password form</legend>
-      <div>
-        <label for="password">Old Password:</label>
-        <input type="password" name="oldPassword"/>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio</title>
+  <!-- CSS-->
+  <link href="https://framework-gb.cdn.gob.mx/favicon.ico" rel="shortcut icon">
+  <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/app.css">
+  <!-- Respond.js soporte de media queries para Internet Explorer 8-->
+  <!-- ie8.js EventTarget para cada nodo en Internet Explorer 8-->
+  <!--if lt IE 9script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
+</head>
+
+<body>
+  <!-- Contenido-->
+  <main class="page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>¡Hola <%= email %>!</h1>
+          <p>
+            Tu tóken de acceso es: 
+            <code><%= accessToken %></code>
+          </p>
+          <p>
+            <a href="/reset-password">Cambiar contraseña</a>
+          </p>
+        </div>
+        <div class="col-md-12">
+          <a class="btn btn-danger" href="/logout?access_token=<%= accessToken %>">Cerrar sesión</a>
+        </div>
       </div>
-      <div>
-        <label for="password">New Password:</label>
-        <input type="password" name="newPassword"/>
-      </div>
-      <div>
-        <input type="submit" value="Change password"/>
-      </div>
-    </fieldset>
-  </form>
-</section>
-<br/>
-<br/>
-  <a href="/logout?access_token=<%= accessToken %>">Log out</a>
-</main>
+    </div>
+  </main>
+  <!-- JS-->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+</body>
+
+</html>

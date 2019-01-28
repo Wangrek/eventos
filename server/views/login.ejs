@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cambiar contraseña</title>
+  <title>Ingresar</title>
   <!-- CSS-->
   <link href="https://framework-gb.cdn.gob.mx/favicon.ico" rel="shortcut icon">
   <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
@@ -22,21 +22,28 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <h1>Cambiar contraseña</h1>
-          <form class="logs-form" action="<%= redirectUrl %>" method="post">
+          <h1>Ingresar</h1>
+          <form class="logs-form" action="/login" method="post">
+            <% if (message_error) { %>
+              <p class="alert alert-danger"><%= message_error %></p>
+            <% } %>
             <div class="form-group">
-              <label for="new-password">Nueva contraseña:</label>
-              <input class="form-control" id="new-password" type="password" name="newPassword" placeholder="Ingresa tu nueva contraseña" />
+              <label for="login-email">Correo electrónico:</label>
+              <input class="form-control" id="login-email" type="email" name="email" value="<%= email %>" placeholder="Ingresa tu correo electrónico" />
+            </div>
+            <div class="form-group">
+              <label for="login-password">Contraseña:</label>
+              <input class="form-control" id="login-password" type="password" name="password" value="<%= password %>" placeholder="Ingresa tu contraseña" />
               <small class="text-help">La contraseña debe tener al menos 6 caractéres</small>
             </div>
-            <div class="form-group">
-              <label for="confirm-password">Confirmar contraseña:</label>
-              <input class="form-control" id="confirm-password" type="password" name="confirmation" placeholder="Confirma tu nueva contraseña" />
-              <small class="text-help">La contraseña debe coincidir exactamente</small>
-            </div>
-            <button class="btn btn-primary btn-block" type="submit">Cambiar contraseña</button>
+            <% if (message_error) { %>
+              <button class="btn btn-primary btn-block" type="submit">Entrar</button>
+            <% } else  { %>
+              <button class="btn btn-primary btn-block" type="submit" disabled="disabled">Entrar</button>
+            <% } %>
             <div class="form-group more-links">
-              <a href="/">Regresar a inicio</a>
+              <a href="/reset">Olvidé mi contraseña</a>
+              <a href="/registro">Crear cuenta</a></div>
           </form>
         </div>
       </div>
@@ -45,6 +52,7 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
   <!-- JS-->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+  <script src="/assets/js/login.js"></script>
 </body>
 
 </html>
