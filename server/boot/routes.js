@@ -53,9 +53,7 @@ module.exports = function(app) {
             message_error: 'Error de inicio de sesión. Nombre de usuario o contraseña incorrectos',
             email: req.body.email,
             password: req.body.password,
-            content: err,
-            redirectTo: '/',
-            redirectToLinkText: 'Por favor vuelve a iniciar sesión',
+            content: err
           });
         }
         return;
