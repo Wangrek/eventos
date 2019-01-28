@@ -21,18 +21,121 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
   <main class="page">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-          <h1>¡Hola <%= email %>!</h1>
+        <div class="col-md-10">
+          <h3>¡Hola <%= email %>!</h3>
           <p>
             Tu tóken de acceso es: 
             <code><%= accessToken %></code>
           </p>
-          <p>
-            <a href="/reset-password">Cambiar contraseña</a>
-          </p>
+        </div>
+        <div class="col-md-2">
+          <a class="btn btn-danger pull-right logout" href="/logout?access_token=<%= accessToken %>">Cerrar sesión</a>
         </div>
         <div class="col-md-12">
-          <a class="btn btn-danger" href="/logout?access_token=<%= accessToken %>">Cerrar sesión</a>
+          <div class="add-guest">
+            <button class="btn btn-primary" data-toggle="collapse" href="#collapse-guest" aria-expanded="false" aria-controls="collapse-guest">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar invitado
+            </button>
+            <div class="collapse" id="collapse-guest">
+              <form class="logs-form" action="/login" method="post">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="email-guest">Usuario:</label>
+                      <input class="form-control" id="email-guest" type="email" name="usuario" placeholder="Ingresa tu correo electrónico" />
+                    </div>
+                    <div class="form-group">
+                      <label for="password-guest">Contraseña:</label>
+                      <input class="form-control" id="password-guest" type="password" name="contrasenia" placeholder="Ingresa una contraseña" />
+                    </div>
+                    <div class="form-group">
+                      <label for="name-guest">Nombre:</label>
+                      <input class="form-control" id="name-guest" type="text" name="nombre" placeholder="Ingresa el nombre" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="surname-guest">Primer apellido:</label>
+                      <input class="form-control" id="surname-guest" type="text" name="primer_apellido" placeholder="Ingresa el primer apellido" />
+                    </div>
+                    <div class="form-group">
+                      <label for="sec-surname-guest">Segundo apellido:</label>
+                      <input class="form-control" id="sec-surname-guest" type="text" name="segundo_apellido" placeholder="Ingresa el segundo apellido" />
+                    </div>
+                    <div class="form-group">
+                      <label for="total-guest">Número de invitados:</label>
+                      <input class="form-control" id="total-guest" type="number" name="no_invitados" placeholder="Ingresa el número de invitados" />
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID Evento</th>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Primer apellido</th>
+                <th>Segundo apellido</th>
+                <th>Num. de invitados</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>jose@hotmail.com</td>
+                <td>José</td>
+                <td>Lóper</td>
+                <td>Hernández</td>
+                <td>5</td>
+                <td>
+                  <button class="btn btn-info">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                  </button>
+                  <button class="btn btn-danger">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>juan@hotmail.com</td>
+                <td>Juan</td>
+                <td>Herrera</td>
+                <td>Mora</td>
+                <td>2</td>
+                <td>
+                  <button class="btn btn-info">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                  </button>
+                  <button class="btn btn-danger">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>hernesto@hotmail.com</td>
+                <td>Hernesto</td>
+                <td>Chacón</td>
+                <td>Jaramillo</td>
+                <td>3</td>
+                <td>
+                  <button class="btn btn-info">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                  </button>
+                  <button class="btn btn-danger">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
