@@ -14,6 +14,9 @@ var app = module.exports = loopback();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Configure static files
+app.use(loopback.static(path.join(__dirname, 'client')));
+
 // configure body parser
 app.use(bodyParser.urlencoded({extended: true}));
 
