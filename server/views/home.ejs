@@ -37,7 +37,12 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar invitado
             </button>
             <div class="collapse" id="collapse-guest">
-              <form class="logs-form" action="/api/tb_invitados?access_token=<%= accessToken %>" method="post">
+              <form class="logs-form">
+                <div class="row">
+                  <div id="alerts" class="col-md-12">
+                    <!-- Se agregan alertas de forma dinámica -->
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">

@@ -8,6 +8,7 @@
     interactions: function() {
       app.select_edit_button();
       app.select_delete_button();
+      app.add_new_guest();
     },
 
     // Obtiene la lista de invitados
@@ -56,6 +57,33 @@
       return guests;
     },
 
+    add_new_guest: function() {
+      $('#collapse-guest form').submit(function(e) {
+        e.preventDefault();
+
+        var guestInputs = $('#collapse-guest form').serializeArray();
+        var guestData = {}
+
+        guestInputs.forEach(function(val) {
+          guestData[val.name] = val.value;
+        });
+        guestData.no_invitados = parseInt(guestData.no_invitados);
+        guestData.access_token = $('#at').text();
+
+        $.ajax({
+          url: '/api/tb_invitados',
+          method: 'POST',
+          dataType: 'json',
+          data: guestData
+        }).done(function(res) {
+          app.add_alert('success', '¡El invitado fué agregado exitosamente!');
+          app.get_guests();
+        }).fail(function(er) {
+          app.add_alert('danger', '¡No se pudo agregar al invitado!, por favor revise los datos');
+        });
+      });
+    },
+
     // Observa el pulsado de los botones editar
     select_edit_button: function() {
       $('#all-guests').on('click', '.btn-edit', function() {
@@ -85,6 +113,7 @@
           inputValues[inputsToChange[i].name] = $('#guest-modal .form-control[name="' + inputsToChange[i].name +'"]').val();
         }
         inputValues.no_invitados = parseInt(inputValues.no_invitados);
+        inputValues.access_token = $('#at').text();
 
         $.ajax({
           url: '/api/tb_invitados/' + id,
@@ -136,6 +165,15 @@
       $('.modal').modal('hide');
       $('#error-modal p').text(message);
       $('#error-modal').modal('show');
+    },
+
+    add_alert: function(type, message) {
+      $('#alerts').append(
+        '<div class="alert alert-'+ type +' alert-dismissible fade in">' +
+          '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>' +
+          '<p>'+ message +'</p>' +
+        '</div>'
+      );
     }
   };
 
