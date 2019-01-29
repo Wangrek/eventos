@@ -110,6 +110,8 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
           <form class="form-modal" action="/api/tb_invitados" method="put">
             <div class="row">
               <div class="col-md-6">
+                <input class="form-control hidden" type="number" name="id">
+                <input class="form-control hidden" type="text" name="id_evento">
                 <div class="form-group">
                   <label for="email-modal">Usuario:</label>
                   <input class="form-control" id="email-modal" type="email" name="usuario" placeholder="Ingresa tu correo electrónico" />
@@ -142,7 +144,7 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar cambios</button>
+          <button type="button" class="btn btn-primary btn-save">Guardar cambios</button>
         </div>
       </div>
     </div>
@@ -157,11 +159,32 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
           <h4 class="modal-title" id="confirm-delete-modal-label">Eliminar invitado</h4>
         </div>
         <div class="modal-body">
-          <p>¿Realmente quieres eliminar éste invitado?</p>
+          <p>
+            ¿Realmente quieres eliminar éste invitado?
+            <span class="id-to-delete hidden"></span>
+          </p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-          <button type="button" class="btn btn-primary">Si</button>
+          <button type="button" class="btn btn-danger btn-confirm-delete">Si</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Modal -->
+  <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="error-modal-label">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="error-modal-label">Ocurrió un error</h4>
+        </div>
+        <div class="modal-body">
+          <p>Texto del error</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
