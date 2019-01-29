@@ -8,30 +8,30 @@
     ]
   },
   "User": {
-    "dataSource": "db",
+    "dataSource": "postgres",
     "public": false
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "postgres",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "postgres",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "postgres",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "postgres",
     "public": false
   },
   "Email": {
     "dataSource": "emailDs"
   },
   "user": {
-    "dataSource": "db",
+    "dataSource": "postgres",
     "public": true,
     "options": {}
   },
