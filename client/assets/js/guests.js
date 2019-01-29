@@ -85,6 +85,7 @@
           inputValues[inputsToChange[i].name] = $('#guest-modal .form-control[name="' + inputsToChange[i].name +'"]').val();
         }
         inputValues.no_invitados = parseInt(inputValues.no_invitados);
+        inputValues.access_token = $('#at').text();
 
         $.ajax({
           url: '/api/tb_invitados/' + id,
