@@ -26,6 +26,10 @@
 ** -------------------------
 */
 
+#all-guests .btn-info {
+  margin-right: 5px;
+}
+
 .logout { margin-top: 30px; }
 
 .add-guest {
