@@ -79,22 +79,22 @@
         $('#id_evento option').remove();
 
         if (!$('#collapse-guest').hasClass('in')) {
-          // $.ajax({
-          //   url: 'https://pretix.eu/api/v1/organizers/vun/events',
-          //   method: 'GET',
-          //   crossDomain: true,
-          //   crossOrigin: true,
-          //   dataType: 'jsonp',
-          //   headers: {
-          //     'Access-Control-Allow-Origin': '*',
-          //     'Content-Type': 'application/x-www-form-urlencoded',
-          //     'Authorization': 'Token wcml447dijrl522tngv833zadvg85mpd9ngg38j90ycx76oq877cju88rvdy67f4'
-          //   }
-          // }).done(function (res) {
-          //   console.dir(res);
-          // }).fail(function (er) {
-          //   console.dir(er);
-          // });
+          $.ajax({
+            url: 'https://pretix.eu/api/v1/organizers/vun/events',
+            method: 'GET',
+            crossDomain: true,
+            crossOrigin: true,
+            dataType: 'jsonp',
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'Authorization': 'Token wcml447dijrl522tngv833zadvg85mpd9ngg38j90ycx76oq877cju88rvdy67f4'
+            }
+          }).done(function (res) {
+            console.dir(res);
+          }).fail(function (er) {
+            console.dir(er);
+          });
 
           // Lena todos los options de acuerdo al response del request
           res.results.forEach(function(val) {
