@@ -37,13 +37,20 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar invitado
             </button>
             <div class="collapse" id="collapse-guest">
-              <form class="logs-form">
+              <form class="form-add">
                 <div class="row">
                   <div id="alerts" class="col-md-12">
                     <!-- Se agregan alertas de forma dinámica -->
                   </div>
                 </div>
                 <div class="row">
+                  <div class="col-md-4 col-md-offset-4">
+                    <div class="form-group hidden">
+                      <label for="id_evento">Evento:</label>
+                      <select id="id_evento" name="id_evento" class="form-control">
+                      </select>
+                    </div>
+                  </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="email">Usuario:</label>
@@ -72,8 +79,7 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
                       <input class="form-control" id="total" type="number" name="no_invitados" placeholder="Ingresa el número de invitados" />
                     </div>
                   </div>
-                  <div class="col-md-6 col-md-offset-3">
-                    <input class="hidden" type="number" name="id_evento" value="1">
+                  <div class="col-md-4 col-md-offset-4">
                     <button class="btn btn-primary btn-block" type="submit">Agregar invitado</button>
                   </div>
                 </div>

@@ -57,7 +57,55 @@
       return guests;
     },
 
+    // Eventos para agregar un nuevo invitado
     add_new_guest: function() {
+      $('.add-guest > button').on('click', function() {
+        var selectOptions = "";
+        var res = {
+          "count": 1,
+          "next": null,
+          "previous": null,
+          "results": [
+            {
+              "name": {
+                "es": "Conferencia de prensa"
+              },
+              "slug": "registro"
+            }
+          ]
+        };
+
+        // Resetea todos los options
+        $('#id_evento option').remove();
+
+        if (!$('#collapse-guest').hasClass('in')) {
+          // $.ajax({
+          //   url: 'https://pretix.eu/api/v1/organizers/vun/events',
+          //   method: 'GET',
+          //   crossDomain: true,
+          //   crossOrigin: true,
+          //   dataType: 'jsonp',
+          //   headers: {
+          //     'Access-Control-Allow-Origin': '*',
+          //     'Content-Type': 'application/x-www-form-urlencoded',
+          //     'Authorization': 'Token wcml447dijrl522tngv833zadvg85mpd9ngg38j90ycx76oq877cju88rvdy67f4'
+          //   }
+          // }).done(function (res) {
+          //   console.dir(res);
+          // }).fail(function (er) {
+          //   console.dir(er);
+          // });
+
+          // Lena todos los options de acuerdo al response del request
+          res.results.forEach(function(val) {
+            selectOptions += '<option value="' + val.slug + '">' + val.name.es +'</option>';
+          });
+
+          $('#id_evento').append(selectOptions);
+          $('#id_evento').parent().removeClass('hidden');
+        }
+      });
+
       $('#collapse-guest form').submit(function(e) {
         e.preventDefault();
 
