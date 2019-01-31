@@ -17,6 +17,7 @@
     "loopback-component-explorer": "^2.1.0",
     "loopback-connector-postgresql": "^3.5.0",
     "md5": "^2.2.1",
+    "request": "^2.88.0",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^1.1.0"
   },
