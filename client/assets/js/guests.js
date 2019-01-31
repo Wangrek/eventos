@@ -65,11 +65,13 @@
         // Resetea todos los options
         $('#id_evento option').remove();
 
+        // Hace una petición para obtener todos los eventos
         if (!$('#collapse-guest').hasClass('in')) {
           $.ajax({
-            url: '/eventos',
+            url: '/api/tb_invitados/eventos',
             method: 'GET',
-            dataType: 'json'
+            dataType: 'json',
+            data: { access_token: $('#at').text() }
           }).done(function (res) {
             // Lena todos los options de acuerdo al response del request
             res.results.forEach(function (val) {
@@ -79,6 +81,7 @@
             $('#id_evento').append(selectOptions);
             $('#id_evento').parent().removeClass('hidden');
           }).fail(function (er) {
+            console.dir(er)
             app.error_occurred(er.responseJSON.error.message);
           });
         }
