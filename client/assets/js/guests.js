@@ -8,6 +8,7 @@
     interactions: function() {
       app.select_edit_button();
       app.select_delete_button();
+      app.select_event_dropdown();
       app.add_new_guest();
     },
 
@@ -62,8 +63,8 @@
       $('.add-guest > button').on('click', function() {
         var selectOptions = "";
 
-        // Resetea todos los options
-        $('#id_evento option').remove();
+        // Resetea todas las opciones de los eventos
+        $('#id_evento ul li').remove();
 
         // Hace una petición para obtener todos los eventos
         if (!$('#collapse-guest').hasClass('in')) {
@@ -75,11 +76,17 @@
           }).done(function (res) {
             // Lena todos los options de acuerdo al response del request
             res.results.forEach(function (val) {
-              selectOptions += '<option value="' + val.slug + '">' + val.name.es + '</option>';
+              selectOptions += '<li><a href="#" data-value="' + val.slug + '">' + val.name.es + '</a></li>';
             });
+            // Agregar el id a un input oculto
+            $('#id_evento input').val(res.results[0].slug);
+            $('#id_evento .dropdown-toggle')
+              .text(res.results[0].name.es)
+              .append('<span class="caret"></span>');
 
-            $('#id_evento').append(selectOptions);
-            $('#id_evento').parent().removeClass('hidden');
+            $('#id_evento ul').append(selectOptions);
+            $('#id_evento ul li:first-child').addClass('active');
+            $('#id_evento').removeClass('hidden');
           }).fail(function (er) {
             console.dir(er)
             app.error_occurred(er.responseJSON.error.message);
@@ -111,6 +118,21 @@
           app.add_alert('danger', '¡No se pudo agregar al invitado!, por favor revise los datos');
         });
       });
+    },
+
+    // Observa la selección del dropdown de eventos
+    select_event_dropdown: function() {
+      $('#id_evento ul').on('click', 'li > a', function(e) {
+        e.preventDefault();
+        // Agregar el id a un input oculto
+        $('#id_evento input').val($(this).attr('data-value'));
+        $('#id_evento .dropdown-toggle')
+          .text($(this).text())
+          .append('<span class="caret"></span>');
+
+        $('#id_evento ul li').removeClass('active');
+        $(this).parent().addClass('active');
+      })
     },
 
     // Observa el pulsado de los botones editar

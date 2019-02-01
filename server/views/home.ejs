@@ -45,10 +45,19 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
                 </div>
                 <div class="row">
                   <div class="col-md-4 col-md-offset-4">
-                    <div class="form-group hidden">
-                      <label for="id_evento">Evento:</label>
-                      <select id="id_evento" name="id_evento" class="form-control">
-                      </select>
+                    <div id="id_evento" class="dropdown hidden">
+                      <label>Evento:</label>
+                      <input class="hidden" type="text" name="id_evento">
+                      <button class="btn btn-default btn-block dropdown-toggle"
+                        type="button" id="btn-event"
+                        data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                        Eventos...
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="btn-event">
+                        <!-- Se agregan dinámicamente -->
+                      </ul>
                     </div>
                   </div>
                   <div class="col-md-6">
