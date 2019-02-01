@@ -32,23 +32,35 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
           <a class="btn btn-danger pull-right logout" href="/logout?access_token=<%= accessToken %>">Cerrar sesión</a>
         </div>
         <div class="col-md-12">
-          <div class="add-guest">
-            <button class="btn btn-primary" data-toggle="collapse" href="#collapse-guest" aria-expanded="false" aria-controls="collapse-guest">
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar invitado
+          <div class="adds">
+            <button class="btn btn-primary add-guest" data-toggle="collapse" href="#collapse-guest" aria-expanded="false" aria-controls="collapse-guest">
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Agregar invitado
+            </button>
+            <button class="btn btn-primary add-event" data-toggle="collapse" href="#collapse-event" aria-expanded="false" aria-controls="collapse-event">
+              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Agregar evento
             </button>
             <div class="collapse" id="collapse-guest">
               <form class="form-add">
                 <div class="row">
-                  <div id="alerts" class="col-md-12">
+                  <div id="alerts-guest" class="col-md-12">
                     <!-- Se agregan alertas de forma dinámica -->
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-4 col-md-offset-4">
-                    <div class="form-group hidden">
-                      <label for="id_evento">Evento:</label>
-                      <select id="id_evento" name="id_evento" class="form-control">
-                      </select>
+                    <div id="id_evento" class="dropdown hidden">
+                      <label>Evento:</label>
+                      <input class="hidden" type="text" name="id_evento">
+                      <button class="btn btn-default btn-block dropdown-toggle"
+                        type="button" id="btn-event"
+                        data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                        Eventos...
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="btn-event">
+                        <!-- Se agregan dinámicamente -->
+                      </ul>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -81,6 +93,50 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
                   </div>
                   <div class="col-md-4 col-md-offset-4">
                     <button class="btn btn-primary btn-block" type="submit">Agregar invitado</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="collapse" id="collapse-event">
+              <form class="form-add">
+                <div class="row">
+                  <div id="alerts-event" class="col-md-12">
+                    <!-- Se agregan alertas de forma dinámica -->
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="name">Nombre del evento:</label>
+                      <input class="form-control" id="name" type="text" name="nombre" placeholder="Ingresa un nombre" />
+                    </div>
+                    <div class="form-group">
+                      <label for="address">Dirección del evento:</label>
+                      <input class="form-control" id="address" type="text" name="direccion" placeholder="Ingresa una Dirección" />
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group datepicker-group">
+                      <label for="date">Fecha:</label>
+                      <input class="form-control" id="date" type="text" name="fecha_evento" placeholder="Ingresa unan fecha" />
+                      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group datepicker-group">
+                      <label for="limit-date">Fecha límite:</label>
+                      <input class="form-control" id="limit-date" type="text" name="fecha_limite" placeholder="Ingresa unan fecha" />
+                      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="invitations">Límite de invitaciones:</label>
+                      <input class="form-control" id="invitations" type="number" name="limite_invitaciones" placeholder="Escribe un número" />
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-md-offset-4">
+                    <button class="btn btn-primary btn-block" type="submit">Agregar evento</button>
                   </div>
                 </div>
               </form>
@@ -203,6 +259,7 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js')-->
   <!-- JS-->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+  <script src="https://framework-gb.cdn.gob.mx/assets/scripts/jquery-ui-datepicker.js"></script>
   <script src="/assets/js/guests.js"></script>
 </body>
 

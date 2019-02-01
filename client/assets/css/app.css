@@ -29,6 +29,25 @@
 .alert-danger { color: #c7254e; }
 
 /*
+** Dropdown
+*/
+#btn-event {
+  position: relative;
+  text-align: left;
+  padding: 10px 25px 10px 10px;
+  margin-bottom: 20px;
+  white-space: nowrap;
+  text-overflow: "...";
+  overflow: hidden;
+}
+#btn-event > .caret {
+  position: absolute;
+  top: 23px;
+  right: 10px;
+}
+#id_evento .dropdown-menu { min-width: 100%; }
+
+/*
 ** Sección de invitados
 ** -------------------------
 */
@@ -39,10 +58,11 @@
 
 .logout { margin-top: 30px; }
 
-.add-guest {
+.adds {
   margin: 50px 0 30px;
 }
-.add-guest .collapse {
+.adds button { margin-bottom: 5px; }
+.adds .collapse {
   margin-top: 10px;
 }
 
