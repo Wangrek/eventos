@@ -10,6 +10,7 @@
       app.select_delete_button();
       app.select_event_dropdown();
       app.add_new_guest();
+      app.add_new_event();
     },
 
     // Obtiene la lista de invitados
@@ -60,8 +61,12 @@
 
     // Eventos para agregar un nuevo invitado
     add_new_guest: function() {
-      $('.add-guest > button').on('click', function() {
+      $('.adds .add-guest').on('click', function() {
         var selectOptions = "";
+
+        if (!$('#collapse-guest').hasClass('in')) {
+          $('.collapse').collapse('hide');
+        }
 
         // Resetea todas las opciones de los eventos
         $('#id_evento ul li').remove();
@@ -112,10 +117,58 @@
           dataType: 'json',
           data: guestData
         }).done(function(res) {
-          app.add_alert('success', '¡El invitado fué agregado exitosamente!');
+          app.add_alert('#alerts-guest', 'success', '¡El invitado fué agregado exitosamente!');
           app.get_guests();
         }).fail(function(er) {
-          app.add_alert('danger', '¡No se pudo agregar al invitado!, por favor revise los datos');
+          app.add_alert('#alerts-guest', 'danger', '¡No se pudo agregar al invitado!, por favor revise los datos');
+        });
+      });
+    },
+
+    // Eventos para agregar un nuevo evento
+    add_new_event: function () {
+      $('#date').datepicker();
+      $('#limit-date').datepicker();
+
+      $('.adds .add-event').on('click', function () {
+        if (!$('#collapse-event').hasClass('in')) {
+          $('.collapse').collapse('hide');
+        }
+      });
+
+      $('#collapse-event form').submit(function (e) {
+        e.preventDefault();
+
+        var eventInputs = $('#collapse-event form').serializeArray();
+        var eventData = {}
+
+        eventInputs.forEach(function (val) {
+          eventData[val.name] = val.value;
+        });
+
+        // Trandformar texto del date a formato JS
+        var regD = /^(\d{1,2}\/)(\d{1,2}\/)(\d{4})$/;
+        var date = $('#date').val().replace(regD, "$2$1$3");
+        var limitDate = $('#limit-date').val().replace(regD, "$2$1$3");
+
+        // Llenado de fechas
+        eventData.fecha_evento = new Date(date);
+        eventData.fecha_limite = new Date(limitDate);
+
+        // Llenado de atributos faltantes
+        eventData.limite_invitaciones = parseInt(eventData.limite_invitaciones);
+        eventData.access_token = $('#at').text();
+
+        $.ajax({
+          url: '/api/tb_invitados/crearEvento',
+          method: 'POST',
+          dataType: 'json',
+          data: eventData
+        }).done(function (res) {
+          app.add_alert('#alerts-event', 'success', '¡El evento fué agregado exitosamente!');
+          app.get_guests();
+        }).fail(function (er) {
+          app.add_alert('#alerts-event', 'danger', '¡No se pudo agregar el evento!, por favor revise los datos');
         });
       });
     },
@@ -218,8 +271,8 @@
       $('#error-modal').modal('show');
     },
 
-    add_alert: function(type, message) {
-      $('#alerts').append(
+    add_alert: function(el, type, message) {
+      $(el).append(
         '<div class="alert alert-'+ type +' alert-dismissible fade in">' +
           '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>' +
           '<p>'+ message +'</p>' +

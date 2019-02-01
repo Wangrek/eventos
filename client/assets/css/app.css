@@ -58,10 +58,11 @@
 
 .logout { margin-top: 30px; }
 
-.add-guest {
+.adds {
   margin: 50px 0 30px;
 }
-.add-guest .collapse {
+.adds button { margin-bottom: 5px; }
+.adds .collapse {
   margin-top: 10px;
 }
 
