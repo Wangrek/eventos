@@ -5,7 +5,7 @@
 
 var config = require('../../server/config.json');
 var path = require('path');
-var senderAddress = "abraham.saldivar@vun.mx"; //Replace this address with your actual address
+var senderAddress = "eventospresidencia@ugd.gob.mx"; //Replace this address with your actual address
 
 module.exports = function(User) {
   //send verification email after registration
