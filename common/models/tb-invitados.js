@@ -56,7 +56,7 @@ module.exports = function(Tbinvitados) {
 
 	Tbinvitados.crearEvento = function(nombre,direccion,fecha_evento,fecha_limite,limite_invitaciones,cb) {	
 		var req = { 
-			uri: 'http://157.230.211.212:8010/api/',
+			uri: 'http://157.230.211.212:8010/api/eventos',
 			method: 'POST',
 			json: true,
 			headers: {
