@@ -25,11 +25,11 @@ module.exports = function(Tbinvitados) {
 
 	Tbinvitados.eventos = function(cb) {
 		var req = {
-			uri: 'https://pretix.eu/api/v1/organizers/vun/events',
+			uri: 'https://pretix.eu/api/v1/organizers/edn/events',
 			method: 'GET',
 			json: true,
 			headers: {
-				Authorization: 'Token wcml447dijrl522tngv833zadvg85mpd9ngg38j90ycx76oq877cju88rvdy67f4',
+				Authorization: 'Token a33cnzz27hys7h4suryg9cpgz4wpb07hx1rf5vzexbiuytxkun46uhtpy3i3xkd5',
 				'Content-Type': 'application/json'
 			}
 		};
